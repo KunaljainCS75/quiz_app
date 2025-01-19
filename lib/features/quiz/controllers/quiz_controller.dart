@@ -19,10 +19,11 @@ class QuizController extends GetxController {
     // pastYearMovies.clear();
     var url = Uri.parse(
           "https://api.jsonserve.com/Uw5CrX");
-      http.Response resp = await http.get(url);
+    http.Response resp = await http.get(url);
 
-      Map<String, dynamic> data = jsonDecode(resp.body);
-      return Quiz.fromMap(data);
+    Map<String, dynamic> data = jsonDecode(resp.body);
+    isLoading.value = false;
+    return Quiz.fromMap(data);
   }
 
   void calculateResult(List<int> answersIndex, Quiz quiz, int time) {
